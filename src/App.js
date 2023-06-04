@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import Name from "./components/Name.jsx";
+import Surname from "./components/Surname.jsx";
+
 
 function App() {
+  const username = 'rouvsen';
+  const familyName = 'Maharramov';
+
+  const arr = [
+    {id: 1, name: 'Alex'},
+    {id: 2, name: 'Amigo'},
+    {id: 3, name: 'Lagos'}
+  ]
+
+  console.log('arr', arr);
+
+const clickFunc = () => {
+  console.log("You clicked the button");
+}
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Name props1 = {username} />
+      <Surname props2 = {familyName} />
+      <button onClick={clickFunc}>Submit</button>
+          {
+            arr.map((el) => (
+              <div key={el.id}>{el.name}</div>
+            ))
+          }
     </div>
   );
 }
