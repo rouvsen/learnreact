@@ -28,6 +28,13 @@ const clickFunc = () => {
               <div key={el.id}>{el.name}</div>
             ))
           }
+
+          {/* {
+            arr.map((el, i) => ( //define a var like i, see that the elements are different from each other
+              <div key={i}>{el.name}</div>
+            ))
+          } */}
+          
     </div>
   );
 }
