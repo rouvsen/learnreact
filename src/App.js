@@ -1,7 +1,7 @@
 // import { useEffect, useMemo, useRef, useState } from "react";
 // import Name from "./components/Name.jsx";
 // import Surname from "./components/Surname.jsx";
-
+import { AiFillCar, AiFillApple } from "react-icons/ai";
 
 function App() {
   // const username = 'rouvsen';
@@ -95,7 +95,12 @@ function App() {
   // )
   // useMemo - one of the react hooks, greate choice in terms of time/memory/speed, memo is powerfull
 
-  
+  return (
+    <>
+      <AiFillCar/>
+      <AiFillApple/>
+    </>
+  )
   
 }
 
