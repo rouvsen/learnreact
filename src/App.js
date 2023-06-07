@@ -1,42 +1,68 @@
-import Name from "./components/Name.jsx";
-import Surname from "./components/Surname.jsx";
+import { useEffect, useState } from "react";
+// import Name from "./components/Name.jsx";
+// import Surname from "./components/Surname.jsx";
 
 
 function App() {
-  const username = 'rouvsen';
-  const familyName = 'Maharramov';
+  // const username = 'rouvsen';
+  // const familyName = 'Maharramov';
 
-  const arr = [
-    {id: 1, name: 'Alex'},
-    {id: 2, name: 'Amigo'},
-    {id: 3, name: 'Lagos'}
-  ]
+  // const arr = [
+  //   {id: 1, name: 'Alex'},
+  //   {id: 2, name: 'Amigo'},
+  //   {id: 3, name: 'Lagos'}
+  // ]
 
-  console.log('arr', arr);
+//   const [color, setColor] = useState('blue');
+//   const [accountState, setAccountState] = useState('closed')
 
-const clickFunc = () => {
-  console.log("You clicked the button");
-}
+//   console.log('arr', arr);
+
+// const clickFunc = () => {
+//   if (color === 'red') {
+//     setColor('blue');
+//   } else {
+//     setColor('red');
+//   }
+// }
+
+// const clickFuncStateOfAccount = () => {
+//   if (accountState === 'closed') {
+//     setAccountState('active');
+//   } else {
+//     setAccountState('closed');
+//   }
+// }
+
+  // const [status, setStatus] = useState(false);
+
+  // if(status) {
+  //   return (
+  //     <div>
+  //     your status is true
+  //   </div>
+  //   )
+  // } else {
+  //   return (
+  //     <div>
+  //       your status is false
+  //       <button onClick={() => setStatus(!status)}>Click</button>
+  //     </div>
+  //   )
+  // }
+
+  const [status, setStatus] = useState('');
+
+  useEffect(() => {
+    setStatus('Hello');
+  }, [])
 
   return (
-    <div className="App">
-      <Name props1 = {username} />
-      <Surname props2 = {familyName} />
-      <button onClick={clickFunc}>Submit</button>
-          {
-            arr.map((el) => (
-              <div key={el.id}>{el.name}</div>
-            ))
-          }
-
-          {/* {
-            arr.map((el, i) => ( //define a var like i, see that the elements are different from each other
-              <div key={i}>{el.name}</div>
-            ))
-          } */}
-          
+    <div>
+      {status}
     </div>
-  );
+  )
+  
 }
 
 export default App;
