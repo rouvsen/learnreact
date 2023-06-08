@@ -1,7 +1,13 @@
 // import { useEffect, useMemo, useRef, useState } from "react";
 // import Name from "./components/Name.jsx";
 // import Surname from "./components/Surname.jsx";
-import { AiFillCar, AiFillApple } from "react-icons/ai";
+// import { AiFillCar, AiFillApple } from "react-icons/ai";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Details from './pages/Details';
+import NotFound from './pages/NotFound';
+import AboutDetail from './pages/AboutDetail';
+
 
 function App() {
   // const username = 'rouvsen';
@@ -95,10 +101,29 @@ function App() {
   // )
   // useMemo - one of the react hooks, greate choice in terms of time/memory/speed, memo is powerfull
 
+  // return (
+  //   <>
+  //     <AiFillCar/>
+  //     <AiFillApple/>
+  //   </>
+  // )
+
   return (
     <>
-      <AiFillCar/>
-      <AiFillApple/>
+      <BrowserRouter>
+      {/* <Switch> //maybe it's old version..
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/contact" component={Contact} />
+        <Route component={NotFound} />
+      </Switch> */}
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/details' element={<Details />} />
+        <Route path='/about-detail/:id' element={<AboutDetail />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      </BrowserRouter>
     </>
   )
   
