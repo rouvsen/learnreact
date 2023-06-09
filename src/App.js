@@ -2,12 +2,13 @@
 // import Name from "./components/Name.jsx";
 // import Surname from "./components/Surname.jsx";
 // import { AiFillCar, AiFillApple } from "react-icons/ai";
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
-import Details from './pages/Details';
-import NotFound from './pages/NotFound';
-import AboutDetail from './pages/AboutDetail';
+// import { BrowserRouter, Route, Routes } from 'react-router-dom';
+// import Home from './pages/Home';
+// import Details from './pages/Details';
+// import NotFound from './pages/NotFound';
+// import AboutDetail from './pages/AboutDetail';
 
+import { useState } from "react";
 
 function App() {
   // const username = 'rouvsen';
@@ -108,22 +109,93 @@ function App() {
   //   </>
   // )
 
+  const [text, setText] = useState("f.e I should learn English");
+  const [message, setMessage] = useState([]);
+
+  // console.log("text", text);
+
+  const onChangeFunc = (val) => {
+    setText(val.target.value);
+  }
+
+  const messageFunc = () => {
+    setMessage(prev => [...prev, text]);
+    setText('');
+  }
+
+  // console.log("message", message);
+
+  //hover
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+  const divStyle = {
+    backgroundColor: isHovered ? "red" : "yellow",
+    padding: "10px",
+    margin: "10px" , 
+    border: "1px solid black"
+  };
+
+  const buttonStyle = {
+    backgroundColor: "red",
+    color: "white",
+    margin: "5px 10px",
+    padding: "10px 20px",
+    borderRadius: "20px",
+    border: "none",
+    cursor: "pointer",
+    transition: "transform 0.3s ease-in-out"
+  };
+
+  const deleteTasksFunc = () => {
+    setMessage([]);
+  }
+
+  //.. how can I import my own css file? `todo`
+
   return (
     <>
-      <BrowserRouter>
+      {/* <BrowserRouter> */}
       {/* <Switch> //maybe it's old version..
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
         <Route component={NotFound} />
       </Switch> */}
-      <Routes>
+      {/* <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/details' element={<Details />} />
         <Route path='/about-detail/:id' element={<AboutDetail />} />
         <Route path="*" element={<NotFound />} />
-      </Routes>
-      </BrowserRouter>
+      </Routes> */}
+      {/* </BrowserRouter> */}
+
+        <h1 style={{ textAlign: "center" }}>Welcome to ToDo Application</h1>
+
+        <input value={text} onChange={onChangeFunc} style={{margin: "10px"}} type="text" placeholder="add" />
+        <button onClick={messageFunc} >add</button>
+
+        <h3 style={{padding: "15px", margin: "10px", color: "red", border: "1px solid blue"}}>My Todos</h3>
+
+        {
+          message?.map((msg, i) => (
+            <div className="myDiv" onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave} style={divStyle} key={i}> {/* handle here - hover */}
+              {msg}
+            </div>
+          ))
+        }
+
+        <button style={buttonStyle} onMouseEnter={(e) => e.target.style.transform = 'scale(1.1)'}
+          onMouseLeave={(e) => e.target.style.transform = 'scale(1)'} onClick={deleteTasksFunc} >Delete All TODOS</button>
+
     </>
   )
   
